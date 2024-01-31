@@ -1,0 +1,34 @@
+{
+    "turns": 10,
+    "level": 2,
+    "words": {
+        "easy": [
+            "rat",
+            "toe",
+            "sun",
+            "map",
+            "time",
+            "tune",
+            "mind",
+            "bath",
+            "sex"
+        ],
+        "medium": [
+            "track",
+            "power",
+            "horse",
+            "mouse",
+            "sweet",
+            "earth"
+        ],
+        "hard": [
+            "popular",
+            "mercury",
+            "universe",
+            "philanthropist",
+            "charity",
+            "malicious",
+            "extravagant"
+        ]
+    }
+}
