@@ -9,7 +9,7 @@ word_set2 = settings.words["medium"]
 word_set3 = settings.words["hard"]
 
 
-def welcome():
+def menu():
     tprint("Welcome to Hangman Game")
 
     condition = int(input("1. Play Game\n2. Edit Settings\nSelect an Option (1/2) - "))
@@ -25,21 +25,23 @@ def settings_key():
         try:
             setting_input = int(
                 input(
-                    "1. Enter 1 to change the number of turns\n2. Change the difficulty level\n3. Add a word to our dictionary\nSelect an option (1/2/3) - "
+                    "1. Enter 1 to change the number of turns\n2. Change the difficulty level\n3. Add a word to our dictionary\n4. View score\nSelect an option (1/2/3/4) - "
                 )
             )
-            if setting_input not in [1, 2, 3]:
+            if setting_input not in [1, 2, 3,4]:
                 setting_input = None
                 raise ValueError
         except ValueError:
-            print("Enter from 1,2,3 only")
+            print("Enter from 1,2,3,4 only")
     if setting_input == 1:
         settings.change_turns()
     elif setting_input == 2:
         settings.change_level()
-    else:
+    elif setting_input == 3:
         settings.custom_wordset()
-    welcome()
+    else:
+        settings.view_score()
+    menu()
 
 
 def game():
@@ -57,9 +59,10 @@ def game():
     while True:
         for i in word:
             string.append("_")
-
+    
         while turns > 0:
             if "_" in string:
+                print("".join(string))
                 letter = input("Guess a letter - ")
                 try:
                     x = int(letter)
@@ -72,7 +75,7 @@ def game():
                         string[word.index(letter)] = letter
                         word = word.replace(letter, "_", 1)
                         print("Correct!")
-                        print("".join(string))
+                        
 
                     else:
                         turns -= 1
@@ -81,6 +84,8 @@ def game():
                     print("Enter only one alphabet")
             else:
                 print("Congratulations! The correct answer is " + "".join(string))
+                settings.score(1)
+                
                 break
 
         if turns == 0 and "_" in string:
@@ -90,12 +95,13 @@ def game():
                 print("Congratulations!,the correct answer is " + ogword)
             else:
                 print("wrong!,the correct answer is " + ogword)
-
-        replay = input("Do you want to play again?(yes/no)")
-        if replay.lower() == "no":
-            welcome()
+                settings.score(2)
+        settings.view_score()
+        replay = input(("Press any key to play again or (f) to stop"))
+        if replay.lower() == "f":
+            menu()
         else:
             game()
 
 
-welcome()
+menu()
