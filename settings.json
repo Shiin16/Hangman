@@ -1,6 +1,10 @@
 {
     "turns": 10,
-    "level": 2,
+    "level": 1,
+    "score": {
+        "computer": 0,
+        "me": 3
+    },
     "words": {
         "easy": [
             "rat",
@@ -11,7 +15,7 @@
             "tune",
             "mind",
             "bath",
-            "sex"
+            "pie"
         ],
         "medium": [
             "track",
@@ -28,7 +32,8 @@
             "philanthropist",
             "charity",
             "malicious",
-            "extravagant"
+            "extravagant",
+            "malevolent"
         ]
     }
 }
