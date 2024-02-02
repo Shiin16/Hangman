@@ -59,3 +59,14 @@ class Settings:
         
         self.words = settings['words']
         SaveFile(settings)
+    def score(self,a):
+        settings=ReadFile()
+        if a==1:
+            settings['score']['me']+=1
+        else:
+            settings['score']['computer']+=1
+        self.score=settings['score']
+        SaveFile(settings)
+    def view_score(self):
+        settings = ReadFile()
+        print("Me:"+str(settings['score']['me']), "Computer"+str(settings['score']['computer']))
